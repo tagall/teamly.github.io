@@ -1,0 +1,29 @@
+<h2>Количество предложений - {{nbDeals}}</h2>
+
+<mat-grid-list cols="5" rowHeight="fit" gutterSize="1px" [style.height]="'200px'">
+  <mat-grid-tile *ngFor="let deal of deals">
+    <div>
+      {{deal.title}}
+      <mat-card [style.width]="'100%'">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <img src="https://images.unsplash.com/photo-1456796148441-485386946471?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;s=7fb56550a679b93a7cf00b0678d1ad8"
+                 alt="Smiley face" width="100%">
+          </div>
+
+          <div fxFlex fxFlexAlign="center">
+            <div fxLayout="row">
+              This is cat {{i}}
+            </div>
+          </div>
+
+          <div fxFlex="10px" fxFlexAlign="center">
+            <button mat-icon-button>
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
