@@ -4,7 +4,7 @@ import { first } from 'rxjs/operators';
 import { User } from '../../../model/user';
 import { UserService } from '../../../service/user.service';
 
-@Component({templateUrl: 'admin.component.html'})
+@Component({templateUrl: 'admin.component.html', styleUrls: ['admin.component.css']})
 export class AdminComponent implements OnInit {
   users: User[] = [];
 

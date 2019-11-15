@@ -20,8 +20,11 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor.service';
 import {ErrorInterceptor} from './helper/error-interceptor.service';
 import {backendProvide} from './service/backend-interceptor.service';
-import { HttpClientModule } from '@angular/common/http';
-import { LoginPageComponent } from './component/login-page/login-page.component';
+import {HttpClientModule} from '@angular/common/http';
+import {LoginPageComponent} from './component/login-page/login-page.component';
+import { MaterialElevationDirective } from './directive/material-elevation.directive';
+import { DealCardComponent } from './component/deals/deal-card/deal-card.component';
+import { DealCreateComponent } from './component/deals/deal-create/deal-create.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
     DealListComponent,
     AdminComponent,
     HomeComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    MaterialElevationDirective,
+    DealCardComponent,
+    DealCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -48,12 +54,18 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
     MatMenuModule,
     HttpClientModule
   ],
+  exports: [
+    DealDetailComponent,
+    DealCardComponent
+  ],
+  entryComponents: [DealDetailComponent],
+
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 
     // provider used to create fake backend
-    backendProvide
+    backendProvide,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,29 +1,20 @@
-<h2>Количество предложений - {{nbDeals}}</h2>
+<!--<div flex>-->
+<!--  &lt;!&ndash;  <button mat-button color="primary" *ngIf="authenticationService.isAdmin" (click)="newDeal()">Добавить предложение</button>&ndash;&gt;-->
+<!--  <div *ngFor="let deal of deals">-->
+<!--    <app-deal-card [deal]="deal"></app-deal-card>-->
+<!--  </div>-->
+<!--</div>-->
 
-<mat-grid-list cols="5" rowHeight="fit" gutterSize="1px" [style.height]="'200px'">
-  <mat-grid-tile *ngFor="let deal of deals">
+
+
+<div class="margin-top-20" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="15px">
+  <mat-card fxFlex="20" (click)="newDeal()" class="mat-card-add-button">
     <div>
-      {{deal.title}}
-      <mat-card [style.width]="'100%'">
-        <div fxLayout="row">
-          <div fxFlex="10">
-            <img src="https://images.unsplash.com/photo-1456796148441-485386946471?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;s=7fb56550a679b93a7cf00b0678d1ad8"
-                 alt="Smiley face" width="100%">
-          </div>
-
-          <div fxFlex fxFlexAlign="center">
-            <div fxLayout="row">
-              This is cat {{i}}
-            </div>
-          </div>
-
-          <div fxFlex="10px" fxFlexAlign="center">
-            <button mat-icon-button>
-              <mat-icon>more_vert</mat-icon>
-            </button>
-          </div>
-        </div>
-      </mat-card>
+      <span><br />Add product</span>
     </div>
-  </mat-grid-tile>
-</mat-grid-list>
+  </mat-card>
+
+  <div fxFlex="20" fxFlex.md="33" *ngFor="let deal of deals; let i = index" class="padding-fix">
+   <app-deal-card [deal]="deal"></app-deal-card>
+  </div>
+</div>

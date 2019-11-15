@@ -1,13 +1,17 @@
-<!-- Toolbar -->
 <mat-toolbar color="primary" class="app-header" xmlns:font-family="http://www.w3.org/1999/xhtml">
-<!--  <span><img src="assets/logo.png" alt="Teamly"></span>-->
+  <!--  <span><img src="assets/logo.png" alt="Teamly"></span>-->
   <span><a>Teamly</a></span>
   <span class="nav-tool-items">
-    <a mat-button routerLink="login" routerLinkActive="active">Войти</a>
-    <a mat-button routerLink="join" routerLinkActive="active">Хочу присоединиться</a>
-    <a mat-button> </a>
-    <a mat-button routerLink="about" routerLinkActive="active">О нас</a>
+    <a mat-button routerLink="/" routerLinkActive="active">Домой</a>
+    <a mat-button routerLink="/deal-list" routerLinkActive="active">Предложения</a>
+    <a mat-button routerLink="/admin"routerLinkActive="active" *ngIf="authenticationService.isAdmin">Управление</a>
+<!--    <a routerLink="/admin" [matMenuTriggerFor]="adminChoices" routerLinkActive="active" *ngIf="isAdminOrHr">Управление</a>-->
+<!--    <mat-menu #adminChoices="matMenu">-->
+<!--      <button mat-menu-item [matMenuTriggerFor]="addCompany()" *ngIf="isAdmin">Добавить компанию</button>-->
+<!--      <button mat-menu-item [matMenuTriggerFor]="addDeal()" *ngIf="isAdmin">Добавить пользователя</button>-->
+<!--      <button mat-menu-item [matMenuTriggerFor]="addUser()">Добавить предложение</button>-->
+<!--    </mat-menu>-->
+    <a mat-button (click)="authenticationService.logout()" routerLinkActive="active">Выйти</a>
   </span>
 </mat-toolbar>
-
 <router-outlet></router-outlet>

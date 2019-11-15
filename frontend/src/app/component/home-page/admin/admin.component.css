@@ -1,0 +1,41 @@
+.main-panel {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-basis: 90%;
+  -webkit-flex-basis: 90%;
+}
+.card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 90%;
+  justify-content: space-evenly;
+}
+
+.card-example {
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  flex-basis: 22%;
+  flex-wrap: wrap;
+}
+
+.card-header-example {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-list > div
+{
+  flex:1 1 auto;
+  border:1px red solid;
+  margin:5px;  /* and that, will result in a 10px gap */
+}

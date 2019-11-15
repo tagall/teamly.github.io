@@ -1,16 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import 'rxjs/add/operator/finally';
 
-import { User} from '../model/user';
+import {User} from '../model/user';
+import {Role} from '../model/role';
+import {Router} from '@angular/router';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -19,8 +22,21 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  get isAdmin() {
+    return this.currentUserValue && this.currentUserValue.role === Role.Admin;
+  }
+
+  get isAdminOrHr() {
+    return this.isAdmin || this.isHr;
+  }
+
+  get isHr() {
+    return this.currentUserValue && this.currentUserValue.role === Role.Hr;
+  }
+
+
   login(username: string, password: string) {
-    return this.http.post<any>(`https://localhost:8080/user/authenticate`, { username, password })
+    return this.http.post<any>(`https://localhost:8080/user/authenticate`, {username, password})
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
@@ -37,5 +53,6 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    this.router.navigate(['/login-page/login']);
   }
 }

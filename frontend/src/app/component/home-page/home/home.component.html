@@ -1,1 +1,7 @@
-<p>home works!</p>
+<h1>Home</h1>
+<p *ngIf="userFromApi">{{userFromApi.firstName}}, добро пожаловать в Teamly!</p>
+<div>
+  <ul>
+    <li *ngIf="userFromApi">{{userFromApi.firstName}} {{userFromApi.lastName}}</li>
+  </ul>
+</div>
