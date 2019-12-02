@@ -1,0 +1,21 @@
+.deals {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: first baseline;
+  padding: 64px;
+}
+.deal {
+  background: white;
+  margin: 10px;
+  height: 100px;
+  width: 200px;
+  padding: 10px;
+}
+
+@media (max-width: 480px) {
+  .deals {}
+  .deal {
+    width: 100%;
+  }
+}

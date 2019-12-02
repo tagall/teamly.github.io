@@ -6,7 +6,6 @@ import {DealDetailComponent} from '../deal-detail/deal-detail.component';
 @Component({
   selector: 'app-deal-card',
   templateUrl: '/deal-card.component.html'
-  // styleUrls: ['/deal-card.component.css']
 })
 export class DealCardComponent implements OnInit {
 

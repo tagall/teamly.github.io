@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2, OnChanges, Simpl
 })
 export class MaterialElevationDirective implements OnChanges {
   defaultElevation = 2;
-  raisedElevation = 8;
+  raisedElevation = 12;
 
   constructor(
     private element: ElementRef,
