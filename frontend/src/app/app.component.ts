@@ -13,7 +13,7 @@ export class AppComponent {
   adminChoices: any;
 
   constructor(private router: Router,
-              private authenticationService: AuthenticationService) {
+              public authenticationService: AuthenticationService) {
   }
 
   logout() {

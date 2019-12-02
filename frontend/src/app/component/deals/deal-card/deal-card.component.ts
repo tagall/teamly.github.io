@@ -5,7 +5,7 @@ import {DealDetailComponent} from '../deal-detail/deal-detail.component';
 
 @Component({
   selector: 'app-deal-card',
-  templateUrl: '/deal-card.component.html'
+  templateUrl: './deal-card.component.html'
 })
 export class DealCardComponent implements OnInit {
 
